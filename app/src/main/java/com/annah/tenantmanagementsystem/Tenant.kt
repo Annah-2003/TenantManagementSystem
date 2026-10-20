@@ -1,16 +1,18 @@
 package com.annah.tenantmanagementsystem
 
+import java.io.Serializable
+
 class Tenant(
     var name: String,
     var apartmentNumber: Int,
     initialRentAmount: Double,
     var phone: String = ""
-) {
+) : Serializable {
+
     var isPaid: Boolean = false
 
     var rentAmount: Double = 0.0
         get() {
-            println("Rent amount accessed.")
             return field
         }
         set(value) {
@@ -22,7 +24,7 @@ class Tenant(
         }
 
     init {
-        // The constructor receives the tenant's starting details, so every object is complete as soon as it is created.
+        // Initialize rentAmount using the custom setter to ensure validation
         rentAmount = initialRentAmount
     }
 

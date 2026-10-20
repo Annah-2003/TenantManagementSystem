@@ -2,4 +2,10 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
-}
+
+        alias(libs.plugins.android.application) apply false
+        alias(libs.plugins.kotlin.android) apply false
+
+        // NEW: Safe Args plugin declaration
+        id("androidx.navigation.safeargs.kotlin") version "2.8.3" apply false
+    }
