@@ -25,6 +25,8 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             Toast.makeText(this, "Account created. Please log in.", Toast.LENGTH_SHORT).show()
+
+            // Return to LoginActivity and pass the email
             val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra("EMAIL", email)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

@@ -6,6 +6,9 @@ plugins {
 android {
     namespace = "com.annah.tenantmanagementsystem"
     compileSdk = 34
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "com.annah.tenantmanagementsystem"
@@ -35,6 +38,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 

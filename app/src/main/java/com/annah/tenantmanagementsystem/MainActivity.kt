@@ -3,6 +3,7 @@ package com.annah.tenantmanagementsystem
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log // Added for lifecycle logging
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +16,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Part A: Log onCreate
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onCreate")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Part B: Restore State after rotation
+        if (savedInstanceState != null) {
+            val name = savedInstanceState.getString("tenant_name")
+            val phone = savedInstanceState.getString("tenant_phone")
+            val rent = savedInstanceState.getDouble("tenant_rent", 0.0)
+            val aptNum = savedInstanceState.getInt("tenant_apt", 0)
+
+            if (name != null && phone != null) {
+                val restoredTenant = Tenant(name, aptNum, rent, phone)
+                lastTenant = restoredTenant
+                currentApartment = Apartment(aptNum).apply { addTenant(restoredTenant) }
+                refreshTenantList()
+            }
+        }
 
         intent.getStringExtra("EMAIL")?.let { email ->
             Toast.makeText(this, "Logged in as $email", Toast.LENGTH_SHORT).show()
@@ -32,7 +52,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Save a tenant first", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             tenant.payRent()
             refreshTenantList()
             Toast.makeText(this, "Rent marked as paid for ${tenant.name}", Toast.LENGTH_SHORT).show()
@@ -44,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Save a tenant first", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${tenant.phone}"))
             startActivity(intent)
         }
@@ -55,7 +73,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Save a tenant first", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_TEXT, tenant.summary())
@@ -63,6 +80,52 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // ── PART B: SAVE STATE ─────────────────────────────────────────
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onSaveInstanceState")
+
+        val tenant = lastTenant
+        if (tenant != null) {
+            outState.putString("tenant_name", tenant.name)
+            outState.putString("tenant_phone", tenant.phone)
+            outState.putDouble("tenant_rent", tenant.rentAmount)
+            outState.putInt("tenant_apt", tenant.apartmentNumber)
+        }
+    }
+
+    // ── PART A: LIFECYCLE METHODS ──────────────────────────────────
+    override fun onStart() {
+        super.onStart()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TENANT_LIFECYCLE", "MainActivity: onDestroy")
+    }
+
+    // ── EXISTING HELPER METHODS ────────────────────────────────────
     private fun saveTenant() {
         val apartmentNumber = binding.apartmentEditText.text.toString().trim().toIntOrNull()
         val name = binding.tenantNameEditText.text.toString().trim()

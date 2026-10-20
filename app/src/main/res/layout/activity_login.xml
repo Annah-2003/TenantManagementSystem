@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/paper"
     android:fitsSystemWindows="true"
-    android:padding="24dp">
+    android:padding="24dp"
+    tools:context=".LoginActivity"
+    tools:deviceIds="pixel"
+    tools:ignore="HardcodedText">
 
     <TextView
         android:id="@+id/loginTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:text="Tenant Desk"
+        android:text="TENANT MANAGEMENT SYSTEM"
         android:textColor="@color/ink"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -25,7 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="A simple tenant management system for apartments, rent, and contacts."
+        android:text="Log in to continue"
         android:textColor="@color/muted_ink"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,9 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:hint="Email"
+        android:autofillHints="emailAddress"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColor="@color/ink"
+        android:textColorHint="@color/muted_ink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/loginSubtitleTextView" />
@@ -52,8 +58,10 @@
         android:layout_marginTop="16dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:autofillHints="password"
         android:minHeight="48dp"
         android:textColor="@color/ink"
+        android:textColorHint="@color/muted_ink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEditText" />
