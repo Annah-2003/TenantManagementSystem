@@ -7,5 +7,5 @@ object TenantRepository {
         tenants.add(tenant)
     }
 
-    fun totalRent(): Double = tenants.sumOf { it.rentAmount }
+    fun totalRent(): Double = tenants.sumOf { it.rent.toDoubleOrNull() ?: 0.0 }
 }

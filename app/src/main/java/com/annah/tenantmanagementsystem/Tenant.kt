@@ -12,29 +12,28 @@ class Tenant(
     var isPaid: Boolean = false
 
     var rentAmount: Double = 0.0
-        get() {
-            return field
-        }
+        get() = field
         set(value) {
-            if (value >= 0.0) {
-                field = value
-            } else {
-                println("Rent amount cannot be negative.")
-            }
+            if (value >= 0.0) field = value
         }
 
+    val rent: String
+        get() = rentAmount.toString()
+
     init {
-        // Initialize rentAmount using the custom setter to ensure validation
         rentAmount = initialRentAmount
     }
 
+    constructor(name: String, phone: String, rent: String) : this(
+        name = name,
+        apartmentNumber = 0,
+        initialRentAmount = rent.toDoubleOrNull() ?: 0.0,
+        phone = phone
+    )
+
     fun payRent() {
         isPaid = true
-        println("Rent paid successfully by $name")
     }
 
-    fun summary(): String {
-        val paidText = if (isPaid) "Paid" else "Pending"
-        return "Tenant: $name\nApartment: $apartmentNumber\nPhone: $phone\nRent: $rentAmount\nStatus: $paidText"
-    }
+    fun summary(): String = "Tenant: $name\nPhone: $phone\nRent: KSh $rent"
 }

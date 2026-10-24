@@ -17,7 +17,7 @@
                 android:id="@+id/newTenantLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Just added"
+                android:text="@string/just_added_label"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="CALL TENANT"
+                android:text="@string/call_tenant_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/newTenantTextView" />
             <androidx.constraintlayout.widget.Group
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="All tenants"
+                android:text="@string/all_tenants_label"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,3 +71,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
+

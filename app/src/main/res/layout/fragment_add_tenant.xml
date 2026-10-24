@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Tenant Name"
+        android:text="@string/tenant_name_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:hint="Enter tenant name"
+        android:hint="@string/enter_tenant_name_hint"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="12dp"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Phone Number"
+        android:text="@string/phone_number_label"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tenantNameEditText" />
@@ -48,7 +48,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:hint="Enter phone number"
+        android:hint="@string/enter_phone_number_hint"
         android:inputType="phone"
         android:minHeight="48dp"
         android:padding="12dp"
@@ -63,7 +63,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:hint="Enter rent amount"
+        android:hint="@string/enter_rent_amount_hint"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:padding="12dp"
@@ -76,7 +76,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
-        android:text="SAVE"
+        android:text="@string/save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/rentEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

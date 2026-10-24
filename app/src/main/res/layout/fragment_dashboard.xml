@@ -9,7 +9,7 @@
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome back"
+        android:text="@string/dashboard_welcome"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Here is an overview of your property"
+        android:text="@string/dashboard_overview"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
 
     <TextView
         android:id="@+id/tenantCountTextView"
@@ -34,11 +34,11 @@
         android:background="#E8EEF7"
         android:gravity="center"
         android:padding="16dp"
-        android:text="Tenants&#10;0"
+        android:text="@string/dashboard_tenant_count"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@id/totalRentTextView"
+        app:layout_constraintEnd_toStartOf="@+id/totalRentTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/overviewTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/overviewTextView" />
 
     <TextView
         android:id="@+id/totalRentTextView"
@@ -48,29 +48,30 @@
         android:background="#E8EEF7"
         android:gravity="center"
         android:padding="16dp"
-        android:text="Total rent&#10;KSh 0"
+        android:text="@string/dashboard_total_rent"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tenantCountTextView"
-        app:layout_constraintTop_toTopOf="@id/tenantCountTextView" />
+        app:layout_constraintStart_toEndOf="@+id/tenantCountTextView"
+        app:layout_constraintTop_toTopOf="@+id/tenantCountTextView" />
 
     <Button
         android:id="@+id/addTenantButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="ADD TENANT"
+        android:text="@string/add_tenant_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tenantCountTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/tenantCountTextView" />
 
     <Button
         android:id="@+id/viewTenantsButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="VIEW TENANTS"
+        android:text="@string/view_tenants_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addTenantButton" />
+        app:layout_constraintTop_toBottomOf="@+id/addTenantButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
