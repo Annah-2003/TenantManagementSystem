@@ -153,6 +153,7 @@ class MainActivity : AppCompatActivity() {
         apartment.addTenant(tenant)
         currentApartment = apartment
         lastTenant = tenant
+        TenantRepository.addTenant(tenant)
 
         refreshTenantList()
         Toast.makeText(this, "Tenant saved", Toast.LENGTH_SHORT).show()
@@ -168,3 +169,4 @@ class MainActivity : AppCompatActivity() {
         binding.tenantResultTextView.text = apartment?.showTenants() ?: "Saved tenants will appear here."
     }
 }
+

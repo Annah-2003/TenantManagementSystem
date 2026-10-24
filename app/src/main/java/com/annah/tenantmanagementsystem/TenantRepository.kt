@@ -1,9 +1,11 @@
 package com.annah.tenantmanagementsystem
 
 object TenantRepository {
-    val allTenants = mutableListOf<Tenant>()
+    val tenants = mutableListOf<Tenant>()
 
     fun addTenant(tenant: Tenant) {
-        allTenants.add(tenant)
+        tenants.add(tenant)
     }
+
+    fun totalRent(): Double = tenants.sumOf { it.rentAmount }
 }
